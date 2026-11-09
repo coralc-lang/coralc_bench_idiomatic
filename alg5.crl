@@ -1,0 +1,19 @@
+void main() {
+    // String literal behaves natively as a str struct with methods
+    str base = "  abcdefghijklmnopqrstuvwxyz-abcdefghijklmnopqrstuvwxyz  ";
+    str clean = base.trim();
+
+    i32 matchCount = 0;
+    for (i32 i = 0; i < 5000; i++) {
+        if (clean.containsView("jkl")) {
+            matchCount++;
+        }
+        if (clean.endsWith("xyz")) {
+            matchCount++;
+        }
+        // Slice a segment out
+        str sub = clean.slice(2, 10);
+    }
+    println("Done. Matches: {}", matchCount);
+
+}

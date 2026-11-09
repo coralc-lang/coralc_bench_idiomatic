@@ -1,0 +1,13 @@
+import std::string { String };
+
+void main() {
+    var text = String::withCap(10000);
+
+    for (i32 i = 0; i < 2000; i++) {
+        text.pushView("abc");
+        if ((i % 10) == 0) {
+            text.pushView("-");
+        }
+    }
+    println("Done. Length: {}", text.len);
+}

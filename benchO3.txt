@@ -1,0 +1,52 @@
+Scanning for test suites...
+ STEP 1: Compiling All Source Files (-O3 Optimizations)
+Building specialized -O3 binaries for: alg1
+coral: built alg1.crl -> alg1O3crl
+Building specialized -O3 binaries for: alg2
+coral: built alg2.crl -> alg2O3crl
+Building specialized -O3 binaries for: alg3
+coral: built alg3.crl -> alg3O3crl
+Building specialized -O3 binaries for: alg4
+coral: built alg4.crl -> alg4O3crl
+Building specialized -O3 binaries for: alg5
+coral: built alg5.crl -> alg5O3crl
+
+ STEP 2: Cooling Down System for 5 Seconds...
+System ready. Clocking benchmarks now.
+
+ STEP 3: Running Interleaved Benchmarks (Rust First)
+Executing Test Suite: alg1
+--------------------------------------------------
+Averages over 100 runs (Optimized -O3):
+  Rust  (./alg1O3rs): 0.00594076 seconds
+  Coral (./alg1O3crl): 0.00577611 seconds
+  WINNER: Coral (alg1O3crl) is faster by 2.77%
+
+Executing Test Suite: alg2
+--------------------------------------------------
+Averages over 100 runs (Optimized -O3):
+  Rust  (./alg2O3rs): 0.00564214 seconds
+  Coral (./alg2O3crl): 0.00530081 seconds
+  WINNER: Coral (alg2O3crl) is faster by 6.05%
+
+Executing Test Suite: alg3
+--------------------------------------------------
+Averages over 100 runs (Optimized -O3):
+  Rust  (./alg3O3rs): 0.00735701 seconds
+  Coral (./alg3O3crl): 0.00648573 seconds
+  WINNER: Coral (alg3O3crl) is faster by 11.84%
+
+Executing Test Suite: alg4
+--------------------------------------------------
+Averages over 100 runs (Optimized -O3):
+  Rust  (./alg4O3rs): 0.00568881 seconds
+  Coral (./alg4O3crl): 0.00515313 seconds
+  WINNER: Coral (alg4O3crl) is faster by 9.42%
+
+Executing Test Suite: alg5
+--------------------------------------------------
+Averages over 100 runs (Optimized -O3):
+  Rust  (./alg5O3rs): 0.00533136 seconds
+  Coral (./alg5O3crl): 0.00506746 seconds
+  WINNER: Coral (alg5O3crl) is faster by 4.95%
+

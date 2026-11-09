@@ -1,0 +1,14 @@
+void main() {
+    var text = String::withCap(10000); 
+    
+    for (i32 i = 0; i < 2000; i++) {
+        text.pushChar('a');
+        text.pushChar('b');
+        text.pushChar('c');
+        
+        if ((i % 10) == 0) {
+            text.pushChar('-');
+        }
+    }
+    println("Done. Length: {}", text.len);
+}

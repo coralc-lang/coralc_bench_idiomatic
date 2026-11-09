@@ -1,0 +1,25 @@
+void main() {
+    var numbers = Vec<i32>::withCap(1000);
+
+    for (i32 i = 0; i < 1000; i++) {
+        if ((i % 2) == 0) {
+            numbers.push(i * 3); // Changed to 3 to match the Rust benchmark exactly
+        } else {
+            numbers.push(-i * 2);
+        }
+    }
+
+    const len = numbers.count();
+
+    for (usize i = 0; i < len; i++) {
+        for (usize j = i + 1; j < len; j++) {
+            if (numbers.at(j) < numbers.at(i)) {
+                const temp = numbers.at(i);
+                numbers.set(i, numbers.at(j));
+                numbers.set(j, temp);
+            }
+        }
+    }
+
+    println("Done. Element 500: {}", numbers.at(500));
+}

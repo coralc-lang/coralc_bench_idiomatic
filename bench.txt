@@ -1,0 +1,52 @@
+Scanning for test suites...
+ STEP 1: Compiling All Source Files (No Optimization)
+Building unoptimized binaries for: alg1
+coral: built alg1.crl -> alg1crl
+Building unoptimized binaries for: alg2
+coral: built alg2.crl -> alg2crl
+Building unoptimized binaries for: alg3
+coral: built alg3.crl -> alg3crl
+Building unoptimized binaries for: alg4
+coral: built alg4.crl -> alg4crl
+Building unoptimized binaries for: alg5
+coral: built alg5.crl -> alg5crl
+
+ STEP 2: Cooling Down System for 5 Seconds...
+System ready. Clocking benchmarks now.
+
+ STEP 3: Running Interleaved Benchmarks (Coral First)
+Executing Test Suite: alg1
+--------------------------------------------------
+Averages over 100 runs (Unoptimized):
+  Rust  (./alg1rs): 0.0260936 seconds
+  Coral (./alg1crl): 0.023599 seconds
+  WINNER: Coral (alg1crl) is faster by 9.56%
+
+Executing Test Suite: alg2
+--------------------------------------------------
+Averages over 100 runs (Unoptimized):
+  Rust  (./alg2rs): 0.0045839 seconds
+  Coral (./alg2crl): 0.00431968 seconds
+  WINNER: Coral (alg2crl) is faster by 5.76%
+
+Executing Test Suite: alg3
+--------------------------------------------------
+Averages over 100 runs (Unoptimized):
+  Rust  (./alg3rs): 0.00521383 seconds
+  Coral (./alg3crl): 0.00482411 seconds
+  WINNER: Coral (alg3crl) is faster by 7.47%
+
+Executing Test Suite: alg4
+--------------------------------------------------
+Averages over 100 runs (Unoptimized):
+  Rust  (./alg4rs): 0.00549919 seconds
+  Coral (./alg4crl): 0.00486747 seconds
+  WINNER: Coral (alg4crl) is faster by 11.49%
+
+Executing Test Suite: alg5
+--------------------------------------------------
+Averages over 100 runs (Unoptimized):
+  Rust  (./alg5rs): 0.00684266 seconds
+  Coral (./alg5crl): 0.0052225 seconds
+  WINNER: Coral (alg5crl) is faster by 23.68%
+
