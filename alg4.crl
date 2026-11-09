@@ -1,7 +1,5 @@
-import std::string { String };
-
 void main() {
-    var text = String::withCap(10000);
+    var text = String::withCap(10000u);
 
     for (i32 i = 0; i < 2000; i++) {
         text.pushView("abc");

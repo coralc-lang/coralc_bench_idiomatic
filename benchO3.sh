@@ -1,6 +1,7 @@
 #!/bin/bash
 
 LOOPS=100
+BIN_ROOT="build"
 
 # 1. Gather all unique test base names
 echo "Scanning for test suites..."
@@ -23,16 +24,18 @@ fi
 echo " STEP 1: Compiling All Source Files (-O3 Optimizations)"
 
 
+mkdir -p "${BIN_ROOT}/rust" "${BIN_ROOT}/coral" "${BIN_ROOT}/cpp"
+
 for TEST in $VALID_TESTS; do
     echo "Building specialized -O3 binaries for: $TEST"
     # Compile with unique O3 specific file outputs
-    rustc -C opt-level=3 "${TEST}.rs" -o "${TEST}O3rs" 2>/dev/null
-    coralc --opt O3 "${TEST}.crl" -o "${TEST}O3crl" 2>/dev/null
-    g++ -O3 "${TEST}.cpp" -o "${TEST}O3cpp" 2>/dev/null
+    rustc -C opt-level=3 "${TEST}.rs" -o "${BIN_ROOT}/rust/${TEST}_O3" 2>/dev/null
+    coralc --opt O3 "${TEST}.crl" -o "${BIN_ROOT}/coral/${TEST}_O3" 2>/dev/null
+    g++ -std=c++23 -O3 "${TEST}.cpp" -o "${BIN_ROOT}/cpp/${TEST}_O3" 2>/dev/null
 
-    if [ ! -f "${TEST}O3rs" ] || [ ! -f "${TEST}O3crl" ] || [ ! -f "${TEST}O3cpp" ]; then
+    if [ ! -f "${BIN_ROOT}/rust/${TEST}_O3" ] || [ ! -f "${BIN_ROOT}/coral/${TEST}_O3" ] || [ ! -f "${BIN_ROOT}/cpp/${TEST}_O3" ]; then
         echo "  [ERROR] Compilation failed for $TEST. Removing partial builds."
-        rm -f "${TEST}O3rs" "${TEST}O3crl" "${TEST}O3cpp"
+        rm -f "${BIN_ROOT}/rust/${TEST}_O3" "${BIN_ROOT}/coral/${TEST}_O3" "${BIN_ROOT}/cpp/${TEST}_O3"
         VALID_TESTS=$(echo "$VALID_TESTS" | sed "s/\b$TEST\b//")
     fi
 done
@@ -83,9 +86,9 @@ for TEST in $VALID_TESTS; do
     echo "--------------------------------------------------"
 
     declare -A EXEC=(
-        [coral]="./${TEST}O3crl"
-        [rust]="./${TEST}O3rs"
-        [cpp]="./${TEST}O3cpp"
+        [coral]="${BIN_ROOT}/coral/${TEST}_O3"
+        [rust]="${BIN_ROOT}/rust/${TEST}_O3"
+        [cpp]="${BIN_ROOT}/cpp/${TEST}_O3"
     )
     declare -A TOTAL=([coral]=0 [rust]=0 [cpp]=0)
     declare -A AVG=([coral]=0 [rust]=0 [cpp]=0)
@@ -122,7 +125,7 @@ for TEST in $VALID_TESTS; do
     done
 
     echo ""
-    rm -f "${TEST}O3rs" "${TEST}O3crl" "${TEST}O3cpp"
+    rm -f "${BIN_ROOT}/rust/${TEST}_O3" "${BIN_ROOT}/coral/${TEST}_O3" "${BIN_ROOT}/cpp/${TEST}_O3"
 done
 
 echo "=================================================="

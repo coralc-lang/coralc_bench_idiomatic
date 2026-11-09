@@ -1,6 +1,7 @@
 #!/bin/bash
 
 LOOPS=100
+BIN_ROOT="build"
 
 # 1. Gather all unique test base names
 echo "Scanning for test suites..."
@@ -23,16 +24,18 @@ fi
 echo " STEP 1: Compiling All Source Files (No Optimization)"
 
 
+mkdir -p "${BIN_ROOT}/rust" "${BIN_ROOT}/coral" "${BIN_ROOT}/cpp"
+
 for TEST in $VALID_TESTS; do
     echo "Building unoptimized binaries for: $TEST"
     # Compiling with NO optimizations explicitly
-    rustc "${TEST}.rs" -o "${TEST}rs" 2>/dev/null
-    coralc "${TEST}.crl" -o "${TEST}crl" 2>/dev/null
-    g++ "${TEST}.cpp" -o "${TEST}cpp" 2>/dev/null
+    rustc "${TEST}.rs" -o "${BIN_ROOT}/rust/${TEST}" 2>/dev/null
+    coralc "${TEST}.crl" -o "${BIN_ROOT}/coral/${TEST}" 2>/dev/null
+    g++ -std=c++23 "${TEST}.cpp" -o "${BIN_ROOT}/cpp/${TEST}" 2>/dev/null
 
-    if [ ! -f "${TEST}rs" ] || [ ! -f "${TEST}crl" ] || [ ! -f "${TEST}cpp" ]; then
+    if [ ! -f "${BIN_ROOT}/rust/${TEST}" ] || [ ! -f "${BIN_ROOT}/coral/${TEST}" ] || [ ! -f "${BIN_ROOT}/cpp/${TEST}" ]; then
         echo "  [ERROR] Compilation failed for $TEST. Removing partial builds."
-        rm -f "${TEST}rs" "${TEST}crl" "${TEST}cpp"
+        rm -f "${BIN_ROOT}/rust/${TEST}" "${BIN_ROOT}/coral/${TEST}" "${BIN_ROOT}/cpp/${TEST}"
         VALID_TESTS=$(echo "$VALID_TESTS" | sed "s/\b$TEST\b//")
     fi
 done
@@ -83,9 +86,9 @@ for TEST in $VALID_TESTS; do
     echo "--------------------------------------------------"
 
     declare -A EXEC=(
-        [coral]="./${TEST}crl"
-        [rust]="./${TEST}rs"
-        [cpp]="./${TEST}cpp"
+        [coral]="${BIN_ROOT}/coral/${TEST}"
+        [rust]="${BIN_ROOT}/rust/${TEST}"
+        [cpp]="${BIN_ROOT}/cpp/${TEST}"
     )
     declare -A TOTAL=([coral]=0 [rust]=0 [cpp]=0)
     declare -A AVG=([coral]=0 [rust]=0 [cpp]=0)
@@ -122,7 +125,7 @@ for TEST in $VALID_TESTS; do
     done
 
     echo ""
-    rm -f "${TEST}rs" "${TEST}crl" "${TEST}cpp"
+    rm -f "${BIN_ROOT}/rust/${TEST}" "${BIN_ROOT}/coral/${TEST}" "${BIN_ROOT}/cpp/${TEST}"
 done
 
 echo "=================================================="

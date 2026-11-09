@@ -1,15 +1,15 @@
 Scanning for test suites...
  STEP 1: Compiling All Source Files (-O3 Optimizations)
 Building specialized -O3 binaries for: alg1
-coral: built alg1.crl -> alg1O3crl
+coral: built alg1.crl -> build/coral/alg1_O3
 Building specialized -O3 binaries for: alg2
-coral: built alg2.crl -> alg2O3crl
+coral: built alg2.crl -> build/coral/alg2_O3
 Building specialized -O3 binaries for: alg3
-coral: built alg3.crl -> alg3O3crl
+coral: built alg3.crl -> build/coral/alg3_O3
 Building specialized -O3 binaries for: alg4
-coral: built alg4.crl -> alg4O3crl
+coral: built alg4.crl -> build/coral/alg4_O3
 Building specialized -O3 binaries for: alg5
-coral: built alg5.crl -> alg5O3crl
+coral: built alg5.crl -> build/coral/alg5_O3
 
  STEP 2: Cooling Down System for 5 Seconds...
 System ready. Clocking benchmarks now.
@@ -18,42 +18,42 @@ System ready. Clocking benchmarks now.
 Executing Test Suite: alg1
 --------------------------------------------------
 Averages over 100 runs (Optimized -O3):
-  1st place: Coral  0.003850401 seconds
-  2nd place: Rust   0.003948574 seconds (+2.55%)
-  3rd place: C++    0.005337559 seconds (+38.62%)
+  1st place: Coral  0.004963633 seconds
+  2nd place: Rust   0.005089628 seconds (+2.54%)
+  3rd place: C++    0.007021310 seconds (+41.46%)
 
 Executing Test Suite: alg2
 --------------------------------------------------
 Averages over 100 runs (Optimized -O3):
-  1st place: Coral  0.003443266 seconds
-  2nd place: Rust   0.003663512 seconds (+6.40%)
-  3rd place: C++    0.004668330 seconds (+35.58%)
+  1st place: Coral  0.004195149 seconds
+  2nd place: Rust   0.004639734 seconds (+10.60%)
+  3rd place: C++    0.006238142 seconds (+48.70%)
 
 Executing Test Suite: alg3
 --------------------------------------------------
 Averages over 100 runs (Optimized -O3):
-  1st place: Coral  0.003246707 seconds
-  2nd place: Rust   0.003549109 seconds (+9.31%)
-  3rd place: C++    0.004542268 seconds (+39.90%)
+  1st place: Coral  0.004248592 seconds
+  2nd place: Rust   0.004647418 seconds (+9.39%)
+  3rd place: C++    0.006161719 seconds (+45.03%)
 
 Executing Test Suite: alg4
 --------------------------------------------------
 Averages over 100 runs (Optimized -O3):
-  1st place: Coral  0.003446711 seconds
-  2nd place: Rust   0.003584889 seconds (+4.01%)
-  3rd place: C++    0.004751131 seconds (+37.85%)
+  1st place: Coral  0.004218722 seconds
+  2nd place: Rust   0.004614899 seconds (+9.39%)
+  3rd place: C++    0.006129026 seconds (+45.28%)
 
 Executing Test Suite: alg5
 --------------------------------------------------
 Averages over 100 runs (Optimized -O3):
-  1st place: Coral  0.003473921 seconds
-  2nd place: Rust   0.003854542 seconds (+10.96%)
-  3rd place: C++    0.005073756 seconds (+46.05%)
+  1st place: Coral  0.004271149 seconds
+  2nd place: Rust   0.004596313 seconds (+7.61%)
+  3rd place: C++    0.006208303 seconds (+45.35%)
 
 ==================================================
  FINAL AVERAGE ACROSS ALL SUITES (Optimized -O3)
 ==================================================
-  1st place: Coral  0.003492201 seconds
-  2nd place: Rust   0.003720125 seconds (+6.53%)
-  3rd place: C++    0.004874609 seconds (+39.59%)
+  1st place: Coral  0.004379449 seconds
+  2nd place: Rust   0.004717598 seconds (+7.72%)
+  3rd place: C++    0.006351700 seconds (+45.03%)
 
