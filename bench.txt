@@ -14,39 +14,46 @@ coral: built alg5.crl -> alg5crl
  STEP 2: Cooling Down System for 5 Seconds...
 System ready. Clocking benchmarks now.
 
- STEP 3: Running Interleaved Benchmarks (Coral First)
+ STEP 3: Running Interleaved Benchmarks (Order Rotates Every Run)
 Executing Test Suite: alg1
 --------------------------------------------------
 Averages over 100 runs (Unoptimized):
-  Rust  (./alg1rs): 0.0260936 seconds
-  Coral (./alg1crl): 0.023599 seconds
-  WINNER: Coral (alg1crl) is faster by 9.56%
+  1st place: Coral  0.021475074 seconds
+  2nd place: C++    0.023609924 seconds (+9.94%)
+  3rd place: Rust   0.025904063 seconds (+20.62%)
 
 Executing Test Suite: alg2
 --------------------------------------------------
 Averages over 100 runs (Unoptimized):
-  Rust  (./alg2rs): 0.0045839 seconds
-  Coral (./alg2crl): 0.00431968 seconds
-  WINNER: Coral (alg2crl) is faster by 5.76%
+  1st place: Coral  0.003297494 seconds
+  2nd place: Rust   0.003562560 seconds (+8.04%)
+  3rd place: C++    0.005043091 seconds (+52.94%)
 
 Executing Test Suite: alg3
 --------------------------------------------------
 Averages over 100 runs (Unoptimized):
-  Rust  (./alg3rs): 0.00521383 seconds
-  Coral (./alg3crl): 0.00482411 seconds
-  WINNER: Coral (alg3crl) is faster by 7.47%
+  1st place: Coral  0.003431951 seconds
+  2nd place: Rust   0.003869842 seconds (+12.76%)
+  3rd place: C++    0.005126372 seconds (+49.37%)
 
 Executing Test Suite: alg4
 --------------------------------------------------
 Averages over 100 runs (Unoptimized):
-  Rust  (./alg4rs): 0.00549919 seconds
-  Coral (./alg4crl): 0.00486747 seconds
-  WINNER: Coral (alg4crl) is faster by 11.49%
+  1st place: Coral  0.003445778 seconds
+  2nd place: Rust   0.003810113 seconds (+10.57%)
+  3rd place: C++    0.005108078 seconds (+48.24%)
 
 Executing Test Suite: alg5
 --------------------------------------------------
 Averages over 100 runs (Unoptimized):
-  Rust  (./alg5rs): 0.00684266 seconds
-  Coral (./alg5crl): 0.0052225 seconds
-  WINNER: Coral (alg5crl) is faster by 23.68%
+  1st place: Coral  0.003797765 seconds
+  2nd place: Rust   0.005057930 seconds (+33.18%)
+  3rd place: C++    0.005295227 seconds (+39.43%)
+
+==================================================
+ FINAL AVERAGE ACROSS ALL SUITES (Unoptimized)
+==================================================
+  1st place: Coral  0.007089612 seconds
+  2nd place: Rust   0.008440902 seconds (+19.06%)
+  3rd place: C++    0.008836538 seconds (+24.64%)
 
